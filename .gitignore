@@ -1,0 +1,3 @@
+*.pyc
+bufferapp_logger.egg-info/
+dist
