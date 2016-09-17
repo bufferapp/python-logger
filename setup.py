@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='bufferapp-logger',
-    version='0.0.2',
+    version='0.0.3',
     url='https://github.com/bufferapp/python-logger',
     download_url='https://github.com/bufferapp/python-logger/archive/master.zip',
     author='Steven Cheng',

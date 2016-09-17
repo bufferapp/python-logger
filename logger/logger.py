@@ -38,7 +38,7 @@ def getTracker(svc_name='test', level=logging.INFO):
     logger.addFilter(f)
 
     handler = StreamHandler(sys.stdout)
-    formatter = logging.Formatter('{"type": "%(svc_name)s", "value": "%(message)s", "date": "%(asctime)s.%(msecs)03dZ", "hostname": "%(hostname)s", "buffermetrics": true}', datefmt='%Y-%m-%dT%H:%M:%S')
+    formatter = logging.Formatter('{"type": "%(svc_name)s", "msg": {"value": "%(message)s"}, "date": "%(asctime)s.%(msecs)03dZ", "hostname": "%(hostname)s", "buffermetrics": true}', datefmt='%Y-%m-%dT%H:%M:%S')
 
     handler.setFormatter(formatter)
     logger.addHandler(handler)
