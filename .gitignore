@@ -1,3 +1,4 @@
 *.pyc
 bufferapp_logger.egg-info/
-dist
+dist/
+.DS_Store
