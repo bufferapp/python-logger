@@ -37,7 +37,8 @@ def getLogger(svc_name='test', output='stdout', level=logging.INFO):
     logger.setLevel(level)
 
     f = ContextFilter(svc_name)
-    logger.addFilter(f)
+    if len(logger.filters) == 0:
+        logger.addFilter(f)
 
     if output == 'td-agent-forward':
         handler = fluent_handler.FluentHandler('application.logs', host='log-aggregator-service.default', port=24224)
@@ -47,7 +48,8 @@ def getLogger(svc_name='test', output='stdout', level=logging.INFO):
         formatter = logging.Formatter(json.dumps(log_custom_format), datefmt='%Y-%m-%dT%H:%M:%S')
 
     handler.setFormatter(formatter)
-    logger.addHandler(handler)
+    if not logger.hasHandlers():
+        logger.addHandler(handler)
 
     return logger
 
@@ -56,7 +58,8 @@ def getTracker(svc_name='test', output='stdout', level=logging.INFO):
     logger.setLevel(level)
 
     f = ContextFilter(svc_name)
-    logger.addFilter(f)
+    if len(logger.filters) == 0:
+        logger.addFilter(f)
 
     if output == 'td-agent-forward':
         handler = fluent_handler.FluentHandler('application.metrics', host='log-aggregator-service.default', port=24224)
@@ -66,6 +69,7 @@ def getTracker(svc_name='test', output='stdout', level=logging.INFO):
         formatter = logging.Formatter(json.dumps(metric_custom_format), datefmt='%Y-%m-%dT%H:%M:%S')
 
     handler.setFormatter(formatter)
-    logger.addHandler(handler)
+    if not logger.hasHandlers():
+        logger.addHandler(handler)
 
     return logger
