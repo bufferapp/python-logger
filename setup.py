@@ -4,7 +4,7 @@ requires = ["fluent-logger == 0.4.4"]
 
 setup(
     name='bufferapp-logger',
-    version='0.0.5',
+    version='0.0.6',
     url='https://github.com/bufferapp/python-logger',
     download_url='https://github.com/bufferapp/python-logger/archive/master.zip',
     author='Steven Cheng',
